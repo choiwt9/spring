@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL" />
+	</settings>
+
+<typeAliases>
+   <typeAlias alias="Member" type="com.kh.spring.member.model.vo.Member"/>
+  <typeAlias alias="Board" type="com.kh.spring.board.model.vo.Board"/>
+</typeAliases>
+
+	<!-- environments, dataSource 에 작성했던 DB연결관련 설정 
+	=> root-context.xml 파일에 작성할 예정 
+		DB 연결 설정은 서버 연결과 동시에 이루어져야 하기에 
+		서버시작 시 함께 바로 읽혀지는 root-context.xml에 작성 -->
+	<mappers>
+		<mapper resource="/mappers/member-mapper.xml" />
+		<mapper resource="/mappers/board-mapper.xml" />
+	</mappers>
+
+</configuration>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boardMapper">
+<resultMap type="Board" id="boardResultSet">
+<result column="board_no" property="boardNo"/>
+<result column="board_title" property="boardTitle"/>
+<result column="board_writer" property="boardWriter"/>
+<result column="origin_name" property="originName"/>
+<result column="change_name" property="changeName"/>
+<result column="count" property="count"/>
+<result column="create_date" property="createDate"/>
+<result column="board_content" property="boardContent"/>
+</resultMap>
+
+	<select id="selectListCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM board
+		WHERE STATUS = 'Y'
+	</select>
+	<select id="selectList" resultMap="boardResultSet">
+		SELECT BOARD_NO
+		,BOARD_TITLE
+		,BOARD_WRITER
+		,ORIGIN_NAME
+		,CHANGE_NAME
+		,COUNT
+		,TO_CHAR(CREATE_DATE, 'YYYY-MMDD') "CREATE_DATE"
+		FROM BOARD
+		WHERE STATUS = 'Y'
+		ORDER BY BOARD_NO DESC
+	</select>
+	<insert id="insertBoard">
+	  INSERT INTO BOARD
+	       ( BOARD_NO
+	       , BOARD_TITLE
+	       , BOARD_WRITER
+	       , ORIGIN_NAME
+	       , CHANGE_NAME
+	       , BOARD_CONTENT
+	       )
+	   VALUES(SEQ_BNO.NEXTVAL
+	            , #{boardTitle}
+	            , #{boardWriter}
+	            , #{originName}
+	            , #{changeName}
+	            , #{boardContent})    
+	</insert>
+	<update id="increaseCount">
+	   UPDATE BOARD
+	    SET COUNT = COUNT + 1
+	    WHERE BOARD_NO = #{boardNo} AND STATUS = 'Y'
+	</update>
+	<select id="selectBoard" resultMap="boardResultSet">
+	   SELECT BOARD_NO
+	         ,BOARD_TITLE
+	         ,BOARD_WRITER
+	         ,TO_CHAR(CREATE_DATE, 'YYYY-MM-DD') "CREATE_DATE"
+	         ,ORIGIN_NAME
+	         , CHANGE_NAME
+	         , BOARD_CONTENT
+	         FROM BOARD
+	         WHERE BOARD_NO = #{boardNo} AND STATUS = 'Y'
+	</select>
+	
+	
+</mapper>
