@@ -1,0 +1,14 @@
+com\kh\spring\member\controller\MemberController.class
+com\kh\spring\board\model\dao\BoardDao.class
+com\kh\spring\common\template\Pagenation.class
+com\kh\spring\member\model\vo\PageInfo.class
+com\kh\spring\member\model\vo\Member.class
+com\kh\spring\board\controller\BoardController.class
+com\kh\spring\board\model\vo\Reply.class
+com\kh\spring\member\service\BoardService.class
+com\kh\spring\member\model\dao\MemberDao.class
+com\kh\spring\board\service\BoardServiceImpl.class
+com\kh\spring\member\service\MemberService.class
+com\kh\spring\board\model\vo\Board.class
+com\kh\spring\common\aspect\LoggingAOP.class
+com\kh\spring\member\service\MemberServiceImpl.class
